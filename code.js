@@ -30,6 +30,9 @@ function division(nombreA, nombreB) {
 let choix;
 let premierNombre;
 let deuxiemeNombre;
+let restart = false; // Cette variable vaut false ce qui veut dire que par défaut, nous ne reproposons par un calcul.
+
+do {
 
 do {
     choix = Number(prompt("Que shouhaitez-vous faire ?\n\n"
@@ -47,7 +50,7 @@ deuxiemeNombre  =  Number(prompt("Entrez le deuxième nombre :"))
 } while(isNaN(premierNombre) || isNaN(premierNombre))
 
 try {
-    
+
 switch (choix) {
     case 1:
         var resultat = addition(premierNombre, deuxiemeNombre)
@@ -70,6 +73,11 @@ catch(error) {
     alert(error);
 }
 
+
+   restart = confirm("Souhaitez-vous refaire un calcul ?")
+   // On demande grâce à la boîte de dialogue confirm() si l'utilisateur veut recommencer
+
+} while (restart);
 
 
 
