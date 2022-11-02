@@ -1,30 +1,28 @@
-let resultat;
-
-function addition(premierNombre, deuxiemeNombre) {
+function addition(nombreA, nombreB) {
     
-    resultat = premierNombre + deuxiemeNombre;
-    return resultat
+    return nombreA + nombreB;
 
 }
 
-function multiplication(premierNombre, deuxiemeNombre) {
+function multiplication(nombreA, nombreB) {
     
-    resultat = premierNombre * deuxiemeNombre;
-    return resultat
+    return nombreA * nombreB;
 
 }
 
-function soustraction(premierNombre, deuxiemeNombre) {
+function soustraction(nombreA, nombreB) {
     
-    resultat = premierNombre - deuxiemeNombre;
-    return resultat
+    return nombreA - nombreB;
 
 }
 
-function division(premierNombre, deuxiemeNombre) {
+function division(nombreA, nombreB) {
     
-    resultat = premierNombre / deuxiemeNombre;
-    return resultat
+    if(nombreB == 0) {
+        throw new Error(" Impossible de diviser par 0.");
+    }
+
+    return nombreA / nombreB;
     
 }
 
@@ -39,39 +37,39 @@ do {
     + "2 - Multiplication\n"
     + "3 - Soustraction\n"
     + "4 - Division\n"));
-} while(choix == null || choix == "" || choix >= 5 || choix == 0);
+} while(choix == null || choix == "" || choix >= 5 || choix == 0); // ou (choix != 1 && choix != 2 && choix != 3 && choix != 4);
 
 alert("Vous avez choisis l'option " + choix)
 
 do {
 premierNombre   =  Number(prompt("Entrez le premier nombre :"))
 deuxiemeNombre  =  Number(prompt("Entrez le deuxième nombre :"))
-if (deuxiemeNombre === 0) {
-    alert("Erreur : Vous ne pouvez pas diviser un nombre par 0")
-} 
-if (isNaN(premierNombre) || isNan(deuxiemeNombre)) {
-    alert("Vous devez rentrer un nombre. (Lettres interdites)")
-}
-} while(premierNombre == null || premierNombre == "" || deuxiemeNombre == null || deuxiemeNombre == "")
+} while(isNaN(premierNombre) || isNaN(premierNombre))
 
+try {
+    
 switch (choix) {
     case 1:
-        addition(premierNombre, deuxiemeNombre)
+        var resultat = addition(premierNombre, deuxiemeNombre)
         break;
     case 2:
-        multiplication(premierNombre, deuxiemeNombre);
+        var resultat = multiplication(premierNombre, deuxiemeNombre);
         break;
     case 3:
-        soustraction(premierNombre, deuxiemeNombre);
+        var resultat = soustraction(premierNombre, deuxiemeNombre);
         break;
     case 4: 
-        division(premierNombre, deuxiemeNombre);
+        var resultat = division(premierNombre, deuxiemeNombre);
         break;
     default :
-    alert("Une erreur est survenue")
+        throw new Error("Une erreur est survenue")      
+}
+alert("Voici le résultat : \n" + resultat);
+}
+catch(error) {
+    alert(error);
 }
 
-alert("Voici le résultat : \n" + resultat)
 
 
 
